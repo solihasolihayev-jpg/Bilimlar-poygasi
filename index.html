@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="uz">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bilimlar poygasi | EDUVERSE 3D</title>
+<link rel="stylesheet" href="style.css">
+<script src="/socket.io/socket.io.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+</head>
+<body>
+<div id="scene"></div>
+<header><div><span class="eyebrow">EDUVERSE 3D</span><h1>🏁 Bilimlar poygasi</h1></div><div class="pill" id="connection">● Ulanmoqda...</div></header>
+<main>
+<section class="card setup" id="setup">
+<h2>O‘yinga qo‘shilish</h2>
+<div class="grid">
+<label>Ismingiz<input id="playerName" maxlength="24" placeholder="Masalan: Dilnoza"></label>
+<label>Xona kodi<input id="roomCode" maxlength="8" value="BILIM" placeholder="BILIM"></label>
+</div>
+<label>Avatarni tanlang</label><div id="avatars" class="avatars"></div>
+<button id="joinBtn" class="primary">O‘yinga kirish</button>
+<p class="muted">Bir xonada 40 nafargacha ishtirokchi.</p>
+</section>
+<section class="game hidden" id="game">
+<div class="topstats">
+<div class="stat"><small>ISHTIROKCHILAR</small><strong id="playerCount">0 / 40</strong></div>
+<div class="stat"><small>SAVOL</small><strong id="questionNumber">—</strong></div>
+<div class="stat"><small>VAQT</small><strong id="timer">20</strong></div>
+<div class="stat"><small>BALLIM</small><strong id="myScore">0</strong></div>
+</div>
+<div class="card quiz">
+<div class="question-meta">BILIMLAR MAYDONI <span id="hostBadge"></span></div>
+<h2 id="questionText">O‘yin boshlanishini kuting...</h2>
+<div id="answers" class="answers"></div>
+<div class="feedback" id="feedback" aria-live="polite"></div>
+</div>
+<div class="lower">
+<div class="card">
+<h3>🏆 Jonli reyting</h3><ol id="leaderboard"></ol>
+</div>
+<div class="card hostpanel hidden" id="hostPanel">
+<h3>🧠 Savollar boshqaruvi</h3>
+<p class="muted">Har savolda 4 ta variant va to‘g‘ri javob raqamini belgilang: 1–4.</p>
+<textarea id="questionsJson" spellcheck="false"></textarea>
+<div class="row"><button id="saveQuestions">Savollarni saqlash</button><button id="startBtn" class="primary">Poygani boshlash</button></div>
+<p class="muted">Namuna tayyor. Uni o‘zingizning savollaringiz bilan almashtirishingiz mumkin. Eng ko‘pi 30 ta savol.</p>
+</div>
+</div>
+<div class="card result hidden" id="result"><h2>🏁 Poyga yakunlandi!</h2><p id="winner"></p><button id="againBtn" class="primary">Yana o‘ynash</button></div>
+</section>
+</main>
+<footer>EDUVERSE 3D · O‘rgan, javob ber, marraga yet!</footer>
+<script src="app.js"></script>
+</body></html>
